@@ -1,0 +1,21 @@
+{
+    "close": "Close",
+    "dialogNewVersionAvailableDetail": "Installed Version: %s\nLatest Version: %s\n\n%s",
+    "dialogNewVersionAvailableMessage": "New release available",
+    "download": "Download",
+    "error": {
+        "checkingUpdate": "Unable to check for updates at this moment. Try again.",
+        "urlNotFound": "Repository URL not found in package.json file."
+    },
+    "info": {
+        "runningLastVersion": "You are already running the latest version.",
+        "checkingForUpdate": "Checking for update...",
+        "newVersionAvailableMessage": "New release available - %s"
+    },
+    "later": "Later",
+    "updateChecker": "Update Checker",
+    "warn": {
+        "updateNotAvailable": "Update not available",
+        "skipCheckForUpdates": "Skip checkForUpdates because application is not packed and dev update config is not forced"
+    }
+}

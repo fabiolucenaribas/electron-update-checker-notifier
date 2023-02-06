@@ -1,0 +1,49 @@
+{
+  "name": "electron-update-checker-notifier",
+  "version": "0.0.1",
+  "description": "Notify user about new app updates by fetching release from Github repository.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "src",
+    "dist",
+    "types"
+  ],
+  "repository": "https://github.com/FabioLucenaRibas/electron-update-checker-notifier",
+  "homepage": "https://github.com/FabioLucenaRibas/electron-update-checker-notifier",
+  "keywords": [
+    "electron",
+    "update",
+    "checker",
+    "notification",
+    "github",
+    "release"
+  ],
+  "author": "fabiolucenaribas",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "watch": "tsc --watch",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/github-url-to-object": "^4.0.0",
+    "electron": "^21",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@stdlib/string-format": "^0.0.3",
+    "axios": "^1.1.3",
+    "compare-versions": "^5.0",
+    "github-url-to-object": "^4.0.4",
+    "typed-emitter": "^2.1.0"
+  },
+  "peerDependencies": {
+    "electron": "*"
+  },
+  "engines": {
+    "node": ">=16.9.0"
+  }
+}

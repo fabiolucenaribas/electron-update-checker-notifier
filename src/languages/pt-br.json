@@ -1,0 +1,21 @@
+{
+    "close": "Fechar",
+    "dialogNewVersionAvailableDetail": "Versão instalada: %s\nÚltima versão: %s\n\n%s",
+    "dialogNewVersionAvailableMessage": "Nova versão disponível",
+    "download": "Baixar",
+    "error": {
+        "checkingUpdate": "Não é possível verificar se há atualizações neste momento. Tente novamente.",
+        "urlNotFound": "URL do repositório não encontrado no arquivo package.json."
+    },
+    "info": {
+        "runningLastVersion": "Você já está executando a versão mais recente.",
+        "checkingForUpdate": "Verificando se há atualização...",
+        "newVersionAvailableMessage": "Nova versão disponível - %s"
+    },
+    "later": "Mais tarde",
+    "updateChecker": "Verificador de atualizações",
+    "warn": {
+        "updateNotAvailable": "Atualização não disponível",
+        "skipCheckForUpdates": "Ignore checkForUpdates porque o aplicativo não está compactado e a configuração de atualização do desenvolvedor não é forçada"
+    }
+}
