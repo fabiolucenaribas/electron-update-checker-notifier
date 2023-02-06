@@ -3,10 +3,10 @@
 É um projeto que busca novas atualizações do aplicativo a partir do repositório do GitHub e notifica o usuário sobre essas atualizações. O objetivo é manter o usuário informado sobre as versões mais recentes de seu software e possibilitar a atualização de maneira simples e rápida.
 
 # Funcionalidades
-Verifica a versão mais recente do aplicativo no repositório do Github.
-Exibi uma notificação para o usuário quando uma nova atualização estiver disponível.
-Gerenciamento de eventos para personalização da verificação de atualizações e exibição de notificações.
-Possibilidade de escolher o idioma usado para as mensagens de log e notificações.
+* Verifica a versão mais recente do aplicativo no repositório do Github.
+* Exibi uma notificação para o usuário quando uma nova atualização estiver disponível.
+* Gerenciamento de eventos para personalização da verificação de atualizações e exibição de notificações.
+* Possibilidade de escolher o idioma usado para as mensagens de log e notificações.
 
 # Configuração de idioma
 Você pode escolher o idioma que será utilizado usado para as mensagens de log e notificações adicionando a seguinte opção à chamada do método updateNotification:
