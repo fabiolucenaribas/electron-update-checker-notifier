@@ -28,7 +28,9 @@ export interface Options {
     repository?: string,
     token?: string,
     debug?: boolean,
-    disableDialogsEventsOnly?: boolean,
+    enableNewVersionAvailableDialog?: boolean,
+    enableErrorDialog?: boolean,
+    enableLatestVersionDialog?: boolean,
     language?: Language,
     logger?: Logger
 }
@@ -70,9 +72,21 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
 
     /**
      * Optional, notify when new version available, otherwise remain silent 
+     * @default true
+     */
+    public enableNewVersionAvailableDialog = true
+
+    /**
+     * Optional, notifies you when you are already running the latest version.
      * @default false
      */
-    public disableDialogsEventsOnly = false
+    public enableLatestVersionDialog = false
+
+    /**
+     * Optional, notifies you when an error occurs
+     * @default false
+     */
+    public enableErrorDialog = false
 
     /**
      * Optional, default Language.EN
@@ -129,8 +143,14 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
         if (options.debug)
             this.debug = options.debug
 
-        if (options.disableDialogsEventsOnly)
-            this.disableDialogsEventsOnly = options.disableDialogsEventsOnly
+        if (options.enableNewVersionAvailableDialog)
+            this.enableNewVersionAvailableDialog = options.enableNewVersionAvailableDialog
+
+        if (options.enableErrorDialog)
+            this.enableErrorDialog = options.enableErrorDialog
+
+        if (options.enableLatestVersionDialog)
+            this.enableLatestVersionDialog = options.enableLatestVersionDialog
 
         if (options.language)
             this.language = options.language
@@ -177,7 +197,7 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
             this.error(error);
             this._logger.error(this.translation.error.checkingUpdate)
 
-            if (this.disableDialogsEventsOnly) {
+            if (this.enableErrorDialog) {
                 this.showDialog(this.translation.error.checkingUpdate, 'error');
             }
         }
@@ -190,12 +210,14 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
             this.emit("update-available", updateInfo)
             this._logger.info(format(this.translation.info.newVersionAvailableMessage, latestRelease.tag_name));
 
-            this.showUpdateDialog(latestRelease)
+            if (this.enableNewVersionAvailableDialog) {
+                this.showUpdateDialog(latestRelease);
+            }
         } else if (compare(app.getVersion(), latestRelease.tag_name, '>=')) {
             this.emit("this-is-last-update", updateInfo)
             this._logger.info(this.translation.info.runningLastVersion);
 
-            if (this.disableDialogsEventsOnly) {
+            if (this.enableLatestVersionDialog) {
                 this.showDialog(this.translation.info.runningLastVersion);
             }
         } else {

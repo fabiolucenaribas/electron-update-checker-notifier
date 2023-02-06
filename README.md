@@ -60,7 +60,11 @@ Você pode passar opções para o método updateNotification() para personalizar
 
 **debug** (opcional, padrão: false): Permite verificar atualizações durante o desenvolvimento.
 
-**disableDialogsEventsOnly** (opcional, padrão: false): Notifica quando houver novas versões disponíveis, caso contrário, permanece silencioso.
+**enableNewVersionAvailableDialog** (opcional, padrão: true): Notifica quando houver novas versões disponíveis, caso contrário, permanece silencioso.
+
+**enableLatestVersionDialog** (opcional, padrão: false): Notifica quando você já está executando a versão mais recente.
+
+**enableErrorDialog** (opcional, padrão: false): Notifica quando um erro acontecer
 
 **language** (opcional, padrão: Language.EN): O idioma usado para as mensagens de log e notificações.
 
