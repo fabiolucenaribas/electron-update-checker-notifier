@@ -2,10 +2,10 @@ import { app, dialog, shell } from 'electron';
 import type TypedEmitter from 'typed-emitter';
 
 import axios from 'axios';
-import { compare } from 'compare-versions';
 import { EventEmitter } from "events";
 import gh from 'github-url-to-object';
 import * as path from 'path';
+import { gt as isVersionGreaterThan, gte as isVersionGreaterThanEqualTo, parse as parseVersion, SemVer } from "semver";
 import { Language, Languages } from './languages';
 
 let format = require('@stdlib/string-format');
@@ -54,15 +54,20 @@ interface GithubReleaseObject {
 export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitter<UpdateCheckerNotifierEvents>) {
 
     /**
+     * The current application version.
+     */
+    readonly currentVersion!: SemVer
+
+    /**
      * Optional, use repository field from your package.json when not specified
      * `user/repo`
      */
-    public repository: string | null = null
+    public repository!: string
 
     /**
      * Optional, GitHub api access token
      */
-    public token: string | null = null
+    public token!: string;
 
     /**
      * Optional, default `false`, allows to check for updates during development as well
@@ -117,6 +122,19 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
     private _logger: Logger = console
 
     private translation: any
+
+    constructor() {
+        super();
+        this.loadTranslation();
+
+        const currentVersionString = app.getVersion();
+        const currentVersion = parseVersion(currentVersionString);
+
+        if (currentVersion == null) {
+            throw Error(format(this.translation.error.currentVersionInvalid, currentVersionString));
+        }
+        this.currentVersion = currentVersion;
+    }
 
     updateNotification(options?: Options) {
         this.loadOptions(options);
@@ -204,16 +222,24 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
 
         if (!latestRelease) return
 
-        const updateInfo: UpdateInfo = { version: latestRelease.tag_name, currentVersion: app.getVersion(), descriptionRelease: latestRelease.body };
+        const latestVersion = parseVersion(latestRelease.tag_name);
+        
+        if (latestVersion == null) {
+            let error = Error(format(this.translation.error.lastVersionInvalid, latestRelease.tag_name))
+            this.error(error);
+            throw error;
+        }
+        
+        const updateInfo: UpdateInfo = { version: latestVersion.version, currentVersion: this.currentVersion.version, descriptionRelease: latestRelease.body };
 
-        if (compare(latestRelease.tag_name, app.getVersion(), '>')) {
+        if (isVersionGreaterThan(latestVersion, this.currentVersion)) {
             this.emit("update-available", updateInfo)
-            this._logger.info(format(this.translation.info.newVersionAvailableMessage, latestRelease.tag_name));
+            this._logger.info(format(this.translation.info.newVersionAvailableMessage, latestVersion.version));
 
             if (this.enableNewVersionAvailableDialog) {
                 this.showUpdateDialog(latestRelease);
             }
-        } else if (compare(app.getVersion(), latestRelease.tag_name, '>=')) {
+        } else if (isVersionGreaterThanEqualTo(this.currentVersion, latestVersion)) {
             this.emit("this-is-last-update", updateInfo)
             this._logger.info(this.translation.info.runningLastVersion);
 

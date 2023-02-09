@@ -5,7 +5,9 @@
     "download": "Baixar",
     "error": {
         "checkingUpdate": "Não é possível verificar se há atualizações neste momento. Tente novamente.",
-        "urlNotFound": "URL do repositório não encontrado no arquivo package.json."
+        "urlNotFound": "URL do repositório não encontrado no arquivo package.json.",
+        "currentVersionInvalid": "A versão do aplicativo não é uma versão semver válida. %s",
+        "versionInvalid": "Não foi possível obter a versão mais recente (do servidor de atualização) pois ela não possui uma versão semver válida. %s"
     },
     "info": {
         "runningLastVersion": "Você já está executando a versão mais recente.",

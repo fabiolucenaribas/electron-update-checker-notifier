@@ -5,7 +5,9 @@
     "download": "Download",
     "error": {
         "checkingUpdate": "Unable to check for updates at this moment. Try again.",
-        "urlNotFound": "Repository URL not found in package.json file."
+        "urlNotFound": "Repository URL not found in package.json file.",
+        "currentVersionInvalid": "App version is not a valid semver version. %s",
+        "lastVersionInvalid": "The latest version (from update server) could not be obtained as it does not have a valid semver version. %s"
     },
     "info": {
         "runningLastVersion": "You are already running the latest version.",
