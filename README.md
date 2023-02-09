@@ -167,7 +167,7 @@ If you want to contribute to this project, follow these steps:
 # Acknowledgments
 I would like to thank the following developers for the work done on the project [electron-update-checker-notifier](https://github.com/FabioLucenaRibas/electron-update-checker-notifier)
 
-* [FabioLucenaRibas](https://github.com/FabioLucenaRibas)
+* [ankurk91](https://github.com/ankurk91)
 * [pd4d10](https://github.com/pd4d10)
 
 Thank you for your dedication and contribution to the community.
@@ -350,7 +350,7 @@ Se você deseja contribuir para este projeto, siga as seguintes etapas:
 # Reconhecimentos
 Gostaría de agradecer aos seguintes desenvolvedores pelo trabalho realizado no projeto [electron-update-checker-notifier](https://github.com/FabioLucenaRibas/electron-update-checker-notifier):
 
-* [FabioLucenaRibas](https://github.com/FabioLucenaRibas)
+* [ankurk91](https://github.com/ankurk91)
 * [pd4d10](https://github.com/pd4d10)
 
 Obrigado por sua dedicação e contribuição com a comunidade.
