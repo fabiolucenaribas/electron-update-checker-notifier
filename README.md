@@ -165,7 +165,7 @@ If you want to contribute to this project, follow these steps:
 5. Create a pull request
 
 # Acknowledgments
-I would like to thank the following developers for the work done on the project [electron-update-checker-notifier](https://github.com/FabioLucenaRibas/electron-update-checker-notifier)
+I would like to thank the following developers for the work done on the project [electron-update-notifier](https://github.com/ankurk91/electron-update-notifier)
 
 * [ankurk91](https://github.com/ankurk91)
 * [pd4d10](https://github.com/pd4d10)
@@ -348,7 +348,7 @@ Se você deseja contribuir para este projeto, siga as seguintes etapas:
 5. Crie um pull request
 
 # Reconhecimentos
-Gostaría de agradecer aos seguintes desenvolvedores pelo trabalho realizado no projeto [electron-update-checker-notifier](https://github.com/FabioLucenaRibas/electron-update-checker-notifier):
+Gostaría de agradecer aos seguintes desenvolvedores pelo trabalho realizado no projeto [electron-update-notifier](https://github.com/ankurk91/electron-update-notifier):
 
 * [ankurk91](https://github.com/ankurk91)
 * [pd4d10](https://github.com/pd4d10)
