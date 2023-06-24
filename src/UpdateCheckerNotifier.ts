@@ -277,7 +277,7 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
         })
     }
 
-    private showDialog = (detail: string, type: string = 'info') => {
+    private showDialog = (detail: string, type: ('none' | 'info' | 'error' | 'question' | 'warning') = 'info') => {
         dialog.showMessageBox(
             {
                 title: app.getName(),
