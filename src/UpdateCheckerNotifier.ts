@@ -22,6 +22,7 @@ export interface UpdateInfo {
     readonly currentVersion: string;
     readonly version: string;
     readonly descriptionRelease: string;
+    readonly preRelease: boolean;
 }
 
 export interface Options {
@@ -49,6 +50,7 @@ interface GithubReleaseObject {
     tag_name: string,
     body: string,
     html_url: string,
+    prerelease: boolean
 }
 
 export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitter<UpdateCheckerNotifierEvents>) {
@@ -74,6 +76,12 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
      * @default false
      */
     public debug = false
+
+    /**
+    * Optional, Skipping pre-release version, define to false to notify pre-release versions
+    * @default true
+    */
+    public skippingPreRelease = true
 
     /**
      * Optional, notify when new version available, otherwise remain silent 
@@ -223,14 +231,19 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
         if (!latestRelease) return
 
         const latestVersion = parseVersion(latestRelease.tag_name);
-        
+
         if (latestVersion == null) {
             let error = Error(format(this.translation.error.lastVersionInvalid, latestRelease.tag_name))
             this.error(error);
             throw error;
         }
-        
-        const updateInfo: UpdateInfo = { version: latestVersion.version, currentVersion: this.currentVersion.version, descriptionRelease: latestRelease.body };
+
+        if (latestRelease.prerelease && this.skippingPreRelease) {
+            this._logger.info(this.translation.info.skippingPreRelease);
+            return 
+        }
+
+        const updateInfo: UpdateInfo = { version: latestVersion.version, currentVersion: this.currentVersion.version, descriptionRelease: latestRelease.body, preRelease: latestRelease.prerelease };
 
         if (isVersionGreaterThan(latestVersion, this.currentVersion)) {
             this.emit("update-available", updateInfo)

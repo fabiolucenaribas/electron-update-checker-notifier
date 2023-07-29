@@ -12,7 +12,8 @@
     "info": {
         "runningLastVersion": "You are already running the latest version.",
         "checkingForUpdate": "Checking for update...",
-        "newVersionAvailableMessage": "New release available - %s"
+        "newVersionAvailableMessage": "New release available - %s",
+        "skippingPreRelease": "Skipping pre-release version, to enable set 'enablePreRelease' to true"
     },
     "later": "Later",
     "updateChecker": "Update Checker",

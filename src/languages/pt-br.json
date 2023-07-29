@@ -12,7 +12,8 @@
     "info": {
         "runningLastVersion": "Você já está executando a versão mais recente.",
         "checkingForUpdate": "Verificando se há atualização...",
-        "newVersionAvailableMessage": "Nova versão disponível - %s"
+        "newVersionAvailableMessage": "Nova versão disponível - %s",
+        "skippingPreRelease": "Ignorando 'pre-release', para ativar, defina 'enablePreRelease' como verdadeiro"
     },
     "later": "Mais tarde",
     "updateChecker": "Verificador de atualizações",
