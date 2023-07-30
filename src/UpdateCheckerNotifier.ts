@@ -29,6 +29,7 @@ export interface Options {
     repository?: string,
     token?: string,
     debug?: boolean,
+    enablePreRelease?: boolean,
     enableNewVersionAvailableDialog?: boolean,
     enableErrorDialog?: boolean,
     enableLatestVersionDialog?: boolean,
@@ -169,6 +170,9 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
         if (options.debug)
             this.debug = options.debug
 
+        if (options.enablePreRelease)
+            this.enablePreRelease = options.enablePreRelease
+
         if (options.enableNewVersionAvailableDialog)
             this.enableNewVersionAvailableDialog = options.enableNewVersionAvailableDialog
 
@@ -240,7 +244,7 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
 
         if (latestRelease.prerelease && !this.enablePreRelease) {
             this._logger.info(this.translation.info.skippingPreRelease);
-            return 
+            return
         }
 
         const updateInfo: UpdateInfo = { version: latestVersion.version, currentVersion: this.currentVersion.version, descriptionRelease: latestRelease.body, preRelease: latestRelease.prerelease };
