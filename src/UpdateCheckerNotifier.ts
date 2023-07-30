@@ -78,10 +78,10 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
     public debug = false
 
     /**
-    * Optional, Skipping pre-release version, define to false to notify pre-release versions
-    * @default true
+    * Optional, notify pre-release version
+    * @default false
     */
-    public skippingPreRelease = true
+    public enablePreRelease = false
 
     /**
      * Optional, notify when new version available, otherwise remain silent 
@@ -238,7 +238,7 @@ export class UpdateCheckerNotifier extends (EventEmitter as new () => TypedEmitt
             throw error;
         }
 
-        if (latestRelease.prerelease && this.skippingPreRelease) {
+        if (latestRelease.prerelease && !this.enablePreRelease) {
             this._logger.info(this.translation.info.skippingPreRelease);
             return 
         }

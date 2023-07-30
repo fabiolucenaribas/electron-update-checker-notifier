@@ -65,6 +65,8 @@ You can pass options to the updateNotification() method to customize its behavio
 
 **debug** (Optional, default: false): Allows checking for updates during development.
 
+**enablePreRelease** (Optional, default: false): Notify pre-release version.
+
 **enableNewVersionAvailableDialog** (Optional, default: true): Notifies when there are new versions available, otherwise remains silent.
 
 **enableLatestVersionDialog** (Optional, default: false): Notifies when you are already running the latest version.
@@ -121,6 +123,7 @@ import { updateCheckerNotifier, Language } from 'electron-update-checker-notifie
 updateCheckerNotifier.repository = 'user/repo'
 updateCheckerNotifier.token = 'my-github-token'
 updateCheckerNotifier.debug = true
+updateCheckerNotifier.enablePreRelease = true
 updateCheckerNotifier.enableNewVersionAvailableDialog = true
 updateCheckerNotifier.enableLatestVersionDialog = true
 updateCheckerNotifier.enableErrorDialog = true
@@ -139,6 +142,7 @@ notifier.updateNotification({
   repository: 'user/repo',
   token: 'my-github-token',
   debug: true,
+  enablePreRelease = true,
   enableNewVersionAvailableDialog: true,
   enableLatestVersionDialog: true,
   enableErrorDialog: true,
@@ -246,6 +250,8 @@ Você pode passar opções para o método updateNotification() para personalizar
 
 **debug** (opcional, padrão: false): Permite verificar atualizações durante o desenvolvimento.
 
+**enablePreRelease** (opcional, padrão: false): Notifica versão de pré-lançamento
+
 **enableNewVersionAvailableDialog** (opcional, padrão: true): Notifica quando houver novas versões disponíveis, caso contrário, permanece silencioso.
 
 **enableLatestVersionDialog** (opcional, padrão: false): Notifica quando você já está executando a versão mais recente.
@@ -304,6 +310,7 @@ import { updateCheckerNotifier, Language } from 'electron-update-checker-notifie
 updateCheckerNotifier.repository = 'user/repo'
 updateCheckerNotifier.token = 'my-github-token'
 updateCheckerNotifier.debug = true
+updateCheckerNotifier.enablePreRelease = true
 updateCheckerNotifier.enableNewVersionAvailableDialog = true
 updateCheckerNotifier.enableLatestVersionDialog = true
 updateCheckerNotifier.enableErrorDialog = true
@@ -322,6 +329,7 @@ notifier.updateNotification({
   repository: 'user/repo',
   token: 'my-github-token',
   debug: true,
+  enablePreRelease = true,
   enableNewVersionAvailableDialog: true,
   enableLatestVersionDialog: true,
   enableErrorDialog: true,
